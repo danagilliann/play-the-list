@@ -19,8 +19,10 @@ app = Flask(__name__)
 def main():
     # track = client.get('/resolve', url='http://soundcloud.com/forss/flickermood')
     # print(track.id)
-    playlist = client.get('/resolve', url='')
-    pprint(vars(playlist))
+    playlist = client.get('/resolve', url='http://soundcloud.com/sadier/sets/heaven_set')
+    tracks = playlist.tracks
+    pprint(len(tracks))
+    # pprint(vars(playlist))
     # tracks = client.get('/tracks', limit=10)
     # for track in tracks:
     #     print(track.title)
