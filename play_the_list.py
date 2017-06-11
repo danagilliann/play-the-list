@@ -17,15 +17,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    # track = client.get('/resolve', url='http://soundcloud.com/forss/flickermood')
-    # print(track.id)
-    playlist = client.get('/resolve', url='http://soundcloud.com/sadier/sets/heaven_set')
+    playlist = client.get('/resolve', url='https://soundcloud.com/dana-lee-34/sets/all-techno')
     tracks = playlist.tracks
-    pprint(len(tracks))
-    # pprint(vars(playlist))
-    # tracks = client.get('/tracks', limit=10)
-    # for track in tracks:
-    #     print(track.title)
+
+    for track in tracks:
+        pprint(track.get('playback_count'))
+
     return render_template('main.html')
 
 # @app.route('/omg', strict_slashes=False)
