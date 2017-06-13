@@ -18,7 +18,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    pprint(vars(client.get('/resolve', url='https://soundcloud.com/chlass/betriebsfeier-ms-hoppetosse-3h-birthday-set?in=dana-lee-34/sets/all-techno')))
     playlist = client.get('/resolve', url='https://soundcloud.com/dana-lee-34/sets/all-techno')
     tracks = playlist.tracks
 
