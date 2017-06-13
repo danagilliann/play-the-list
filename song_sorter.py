@@ -1,10 +1,10 @@
 from pprint import pprint
 
 class Track:
-    def __init__(self, name, playback_fav):
+    def __init__(self, name, playback_fav, genres):
         self.name = name
         self.playback_fav = playback_fav
-        # self.genres = genres
+        self.genres = genres
 
 def get_playback_fav(playback, favoritings):
     playback_fav = 0
@@ -27,8 +27,11 @@ def song_sorter(tracks={}):
         playback_fav = get_playback_fav(
                 track.get('playback_count'),
                 track.get('favoritings_count'))
-        track_nodes.append(Track(
-            track.get('title'), playback_fav))
+        track_nodes.append(
+                Track(
+                    track.get('title'),
+                    playback_fav,
+                    track.get('genre')))
 
     for node in track_nodes:
         pprint(vars(node))
