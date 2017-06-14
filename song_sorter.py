@@ -5,6 +5,10 @@ class Track:
         self.name = name
         self.playback_fav = playback_fav
         self.genres = genres
+        self.next = None
+
+    def set_next(track):
+        self.next = track
 
 def get_playback_fav(playback, favoritings):
     playback_fav = 0
@@ -20,7 +24,10 @@ def get_playback_fav(playback, favoritings):
 
     return playback_fav
 
-def song_sorter(tracks={}):
+# def get_linked_list(array):
+
+
+def get_song_nodes(tracks={}):
     track_nodes = []
 
     for track in tracks:

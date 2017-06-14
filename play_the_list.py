@@ -21,7 +21,7 @@ def main():
     playlist = client.get('/resolve', url='https://soundcloud.com/dana-lee-34/sets/all-techno')
     tracks = playlist.tracks
 
-    song_sorter.song_sorter(tracks)
+    song_sorter.get_song_nodes(tracks)
 
     return render_template('main.html')
 
