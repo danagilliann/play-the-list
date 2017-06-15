@@ -1,3 +1,7 @@
+body {
+  margin-top: 5em;
+}
+
 h1, h2, h3, h4, h5, h6, p, a {
   font-family: 'Roboto Mono', monospace;
   color: black;
@@ -10,4 +14,17 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-weight: 400;
+}
+
+form {
+  margin-top: 4em;
+  text-align: center;
+}
+
+input[type=submit] {
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  background-color: white;
+  border-color: black;
+  font-size: 14px;
 }
