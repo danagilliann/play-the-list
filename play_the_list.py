@@ -1,12 +1,15 @@
 # libraries
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
 import soundcloud
 import song_sorter
+from wtforms import Form, validators, StringField
 
 # dev
 from pprint import pprint
 import config
+
+class RegistrationForm(Form):
+    playlist = StringField('Playlist', validators=[validators.input_required()])
 
 client = soundcloud.Client(
         client_id=config.client_id(),
@@ -16,14 +19,15 @@ client = soundcloud.Client(
 )
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def main():
+    form = RegistrationForm(request.form)
     playlist = client.get('/resolve', url='https://soundcloud.com/dana-lee-34/sets/all-techno')
     tracks = playlist.tracks
 
     song_sorter.get_song_nodes(tracks)
 
-    return render_template('main.html')
+    return render_template('main.html', form=form)
 
 # @app.route('/omg', strict_slashes=False)
 # def omg():
