@@ -19,10 +19,11 @@ class RegistrationForm(Form):
     playlist = StringField('Playlist', validators=[validators.input_required()])
 
 class Track:
-    def __init__(self, name, playback_fav, genres):
+    def __init__(self, name, playback_fav, genres, url):
         self.name = name
         self.playback_fav = playback_fav
         self.genres = genres
+        self.url = url
 
 def pprint_array(array):
     for item in array:
@@ -53,7 +54,8 @@ def get_song_nodes(tracks={}):
                 Track(
                     track.get('title'),
                     playback_fav,
-                    track.get('genre')))
+                    track.get('genre'),
+                    track.get('permalink_url')))
 
     track_nodes = sorted(
             track_nodes,
