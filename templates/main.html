@@ -2,8 +2,19 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
 <h1>play the list</h1>
-
-<form>
-  <h4>Enter playlist here: <input type="text"></input></h4>
-  <input type="submit" value="Submit">
-</form>
+{% if form %}
+  <form action="/" method="post">
+    <h4>Enter playlist here: <input type="text" name="playlist_link"></input></h4>
+    <input type="submit" value="Submit">
+  </form>
+{% elif track_nodes %}
+  {% for track in track_nodes %}
+    <div class="track">
+      <p>{{ track.genres }}</p>
+      <p>{{ track.name }}</p>
+      <p>{{ track.playback_fav }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <h1>I am nothing</h1>
+{% endif %}
